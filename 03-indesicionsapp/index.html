@@ -7,12 +7,76 @@
     <title>Indecision App</title>
     <link rel="stylesheet" href="./style.css">
     <!-- <link rel="icon" href="./favicon.ico" type="image/x-icon"> -->
+    <style>
+ @import url('https://fonts.googleapis.com/css2?family=Dangrek&display=swap');
+body{
+    margin: 0px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Dangrek', cursive;
+    font-size: 30px;
+}
+
+h1{
+    padding: 0px;
+    margin: 0px;
+}
+
+#container{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+}
+
+input {
+    padding: 10px 15px;
+    border: solid 1px #333;
+    border-radius: 4px;
+    min-width: 400px;
+}
+
+input:focus{
+    outline: none;
+}
+
+form{
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    right: 0px;
+}
+
+#content {
+    position: absolute;
+    bottom: 50px;
+    left: 0px;
+    right: 0px;
+}
+
+.decision{
+    text-transform: uppercase;
+}
+
+label{
+    font-size: 20px;
+}
+
+    </style>
   </head>
   <body>
-    <form id="formQuestion">
-      <input id="question" type="text" placeholder="Escribe una pregunta">
-    </form>
-    <div id="h1"></div>
-	<script src="./index.js"></script>
+    <div id="container">
+      <form id="formQuestion">
+          <h1>Decision App</h1>
+          <input id="question" type="text" placeholder="Escribe una pregunta" autocomplete="off">
+          <br>
+          <label>Recuerda terminar la pregunta con ?</label>
+      </form>
+      <div id="content"></div>
+  </div>
+  <script src="./4index.js"></script>
   </body>
 </html>

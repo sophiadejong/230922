@@ -1,26 +1,32 @@
-const form = document.querySelector('#formQuestion'); 
-
+// Guardamos una referencia al formulario
+const form = document.querySelector('#formQuestion');
+// Guardamos una referencia al input
 const question = document.querySelector('#question');
-
-form.addEventListener('submit', async (e) =>{
-    e.preventDefault();
-    console.log(question.value);
-    const decision = await getDecision();
-    console.log(decision);
-    document.querySelector('#h1').innerHTML = `<h1>${question.value}</h1>
-    <img src='${decision.image}'>
-    `
-    
-})
-
-// const getDecision = async () => {
-//     return await fetch('https://yesno.wtf/api').then(resp => resp.json())
-// }
-
+const container = document.querySelector('#container');
+const content = document.querySelector('#content')
 const getDecision = async () => {
-// pedimos informacion al servidor
+     // OPCION A
+    // Pedimos informacion al servidor
     const resp = await fetch('https://yesno.wtf/api');
-// convertimos la informacion en un json
+    // Convertimos la informacion en un json
     const data = await resp.json();
     return data
+    // OPCION B
+    // return await fetch('https://yesno.wtf/api').then(resp => resp.json()) 
 }
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    // Validamos que haya texto en el input
+    const questionValue = question.value.trim();
+    if (questionValue.length === 0) return ;
+    if (questionValue.charAt(questionValue.length - 1) != '?') return;
+    const decision = await getDecision();
+    container.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), 
+    rgba(0, 0, 0, 0.5)), 
+    url(${decision.image})`;
+    let html = `<h1>${question.value}</h1>`;
+    html += `<h1 class="decision">${decision.answer}</h1>`;
+    content.innerHTML = html;
+    question.value = '';
+})
