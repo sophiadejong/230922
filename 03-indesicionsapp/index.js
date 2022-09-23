@@ -2,12 +2,15 @@ const form = document.querySelector('#formQuestion');
 
 const question = document.querySelector('#question');
 
-form.addEventListener('submit', (e) =>{
+form.addEventListener('submit', async (e) =>{
     e.preventDefault();
     console.log(question.value);
-    const resp = await getDecision();
-    console.log(getDecision);
-    document.querySelector('#h1').innerHTML = `<h1>${question.value}</h1>`
+    const decision = await getDecision();
+    console.log(decision);
+    document.querySelector('#h1').innerHTML = `<h1>${question.value}</h1>
+    <img src='${decision.image}'>
+    `
+    
 })
 
 // const getDecision = async () => {
